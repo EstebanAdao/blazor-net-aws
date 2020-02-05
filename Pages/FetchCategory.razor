@@ -1,0 +1,50 @@
+﻿@page "/fetchCategory"
+
+@using AWS_Blazor.Data
+@inject WebMotorsService WebMotorsService
+
+<h1>List of categories</h1>
+
+<p>This component demonstrates fetching data from a service on AWS.</p>
+
+@if (categories == null)
+{
+	<p><em>Loading...</em></p>
+}
+else
+{
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Nome</th>
+				<th>Url</th>
+				<th>Nome Categoria</th>
+				<th>Banner Desktop</th>
+				<th>Descrição</th>
+				<th>Data Inclusão</th>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach (var category in categories)
+			{
+				<tr>
+					<td>@category.Nome</td>
+					<td>@category.Url</td>
+					<td>@category.NomeCategoria</td>
+					<td>@category.BannerDesktop</td>
+					<td>@category.Descricao</td>
+					<td>@category.DataInclusao.ToShortDateString()</td>
+				</tr>
+			}
+		</tbody>
+	</table>
+}
+
+@code {
+	private List<Category> categories;
+
+	protected override async Task OnInitializedAsync()
+	{
+		categories = await WebMotorsService.GetCategoriesAsync();
+	}
+}

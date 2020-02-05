@@ -1,0 +1,71 @@
+﻿@page "/fetchSearch"
+
+@using AWS_Blazor.Data
+@inject WebMotorsService WebMotorsService
+
+<h1>List of advertiser</h1>
+
+<p>This component demonstrates fetching data from a service on AWS.</p>
+
+@if (search == null)
+{
+	<p><em>Loading...</em></p>
+}
+else
+{
+	<input type="text" @bind="marca" placeholder="Digite Marca" />
+	<br />
+	<br />
+	<input type="text" @bind="modelo" placeholder="Digite Modelo" />
+	<br />
+	<br />
+	<button class="btn btn-primary" @onclick="getSearchResult">Click me</button>
+	<br />
+	<br />
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>Title</th>
+				<th>Make</th>
+				<th>Model</th>
+				<th>Version</th>
+				<th>Year</th>
+				<th>City</th>
+				<th>State</th>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach (var search in search.SearchResults)
+			{
+				<tr>
+					<td>@search.UniqueId</td>
+					<td>@search.Specification.Title</td>
+					<td>@search.Specification.Make.Value</td>
+					<td>@search.Specification.Model.Value</td>
+					<td>@search.Specification.Version.Value</td>
+					<td>@search.Specification.YearFabrication</td>
+					<td>@search.Seller.City</td>
+					<td>@search.Seller.State</td>
+				</tr>
+			}
+		</tbody>
+	</table>
+}
+
+@code {
+	private Search search;
+	private string marca;
+	private string modelo;
+
+	protected override async Task OnInitializedAsync()
+	{
+		search = await WebMotorsService.GetSearchAsync("", "");
+	}
+
+	private async Task getSearchResult()
+	{
+		search = await WebMotorsService.GetSearchAsync(marca, modelo);
+	}
+
+}
