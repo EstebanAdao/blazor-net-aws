@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Blazored.Modal;
 using AWS_Blazor.Data;
 
 namespace AWS_Blazor
@@ -28,6 +29,7 @@ namespace AWS_Blazor
 		{
 			services.AddRazorPages();
 			services.AddServerSideBlazor();
+			services.AddBlazoredModal();
 			services.AddSingleton<WebMotorsService>();
 		}
 
