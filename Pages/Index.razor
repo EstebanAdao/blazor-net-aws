@@ -1,5 +1,19 @@
-﻿@page "/"
+﻿@using Microsoft.AspNetCore.Http;
+@inject IHttpContextAccessor httpContextAccessor;
+@page "/"
 
 <h1>Hello, world!</h1>
 
 Welcome to your new app.
+@if (@httpContextAccessor.HttpContext.Request.Headers["User-Agent"].ToString().Contains("Windows"))
+{
+	<p>Soy Desktop -</p>
+	<p> @httpContextAccessor.HttpContext.Request.Headers["User-Agent"].ToString()</p>
+	<Counter></Counter>
+}
+else
+{
+	<p>Soy Mobile</p>
+	<p> @httpContextAccessor.HttpContext.Request.Headers["User-Agent"].ToString()</p>
+	<p>Entrei no Else</p>
+}

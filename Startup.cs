@@ -11,6 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Blazored.Modal;
 using AWS_Blazor.Data;
+using Microsoft.AspNetCore.Http;
 
 namespace AWS_Blazor
 {
@@ -31,6 +32,7 @@ namespace AWS_Blazor
 			services.AddServerSideBlazor();
 			services.AddBlazoredModal();
 			services.AddSingleton<WebMotorsService>();
+			services.AddHttpContextAccessor();
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
