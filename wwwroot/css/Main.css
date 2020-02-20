@@ -1,0 +1,10 @@
+﻿.Footer h3 {
+  color: blueviolet; }
+
+.btn-teste {
+  background-color: slategray; }
+  .btn-teste:hover {
+    background-color: yellow; }
+
+.Header h3 {
+  color: blue; }

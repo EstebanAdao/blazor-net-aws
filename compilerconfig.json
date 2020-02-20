@@ -1,10 +1,18 @@
-﻿[
-  {
-    "outputFile": "Styles/Blazor.css",
-    "inputFile": "Styles/Blazor.scss"
-  },
+[
   {
     "outputFile": "wwwroot/Styles/Blazor.css",
     "inputFile": "wwwroot/Styles/Blazor.scss"
+  },
+  {
+    "outputFile": "wwwroot/Shared/Footer/Footer.css",
+    "inputFile": "Shared/Footer/Footer.scss"
+  },
+  {
+    "outputFile": "wwwroot/Shared/Header/Header.css",
+    "inputFile": "Shared/Header/Header.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/Main.css",
+    "inputFile": "css/Main.scss"
   }
 ]
